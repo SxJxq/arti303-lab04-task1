@@ -1,0 +1,38 @@
+?- house = house.
+true. reason: a constant unifies with itself
+
+?- house = abc.
+false. reason: not identical constants, there is no way to fill anything in
+
+?- edge(a,b) = edge(C,b).
+C = a. reason: the functions are the same name and number of arguments and b = b so C instantiated to a
+
+?- edge(a,d) = edge(C,B).
+C = a,
+B = d. reason: same functor and number of arguments, each variable takes the value in its position
+
+?- edge(C,B) = edge(a,d).
+C = a,
+B = d. reason: same as above, and unification doesn't care which side the variables are on
+
+?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h). reason: a variable unifies with any term, including a whole structure
+
+?- edge(A,A) = edge(b,c).
+false. reason: the same variable must hold the same value
+
+?- edge(A,A) = edge(b,b).
+A = b. reason: both positions want A to be b, so they agree
+
+?- A = B, B = f.
+A = B, B = f. reason: A and B are linked, then B becomes f, so A is f too
+
+?- A = B, B = f, A = e.
+false. reason: A is already f through the link, and f doesn't unify with e
+
+?- A = B, B = f.
+A = B, B = f. reason:
+
+?- A = B, B = f, A = e.
+false. reason:
